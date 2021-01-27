@@ -1,0 +1,74 @@
+:root{
+	--mainColor: #9EC9A8;
+	--mainShadow:    12px 12px 24px #99c3a3, 
+             -12px -12px 24px #a3cfad;
+    --mainRadius: 5px 5px 0 0;
+
+
+	--secondaryColor: #b7e6c2;
+	--secondaryShadow:  12px 12px 24px #b2dfbc, 
+             -12px -12px 24px #bcedc8;
+	--secondaryRadius: 5px;;
+
+	--borderColor: #86E6A1;
+
+	--mainText: beige;
+	--secondaryText: #4b5156;
+
+	--themeDotBorder: white;
+
+	--previewBg: rgb(251, 249, 243, 0.6);
+	--previewShadow: #72b68a;
+
+	--inputField:  inset 8px 8px 24px #b0ddba, 
+            inset -8px -8px 24px #beefca;
+
+	--buttonColor: #53c653;
+
+}
+
+body *{
+    transition: 0.3s;
+}
+
+html, body{
+	padding: 0;
+    margin: 0;
+    background-color: #a6e7ba;
+}
+
+h1{
+	color: var(--mainText);
+	font-weight: 500;
+	font-family: 'Just Me Again Down Here', cursive;
+
+}
+
+h2, h3, h4, h5, h6, strong{
+	font-family: 'Noto Sans HK', sans-serif;
+	color: var(--mainText);
+}
+
+label{
+font-family: 'Noto Sans HK', sans-serif;
+}
+
+h1{
+	font-size: 56px;
+}
+
+h2{
+	font-size: 36px;
+}
+h3{
+	font-size: 28px;
+}
+h4{
+	font-size: 24px;
+}
+h5{
+	font-size: 20px;
+}
+h6{
+	font-size: 16px;
+}
