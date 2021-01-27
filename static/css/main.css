@@ -1,0 +1,155 @@
+#page-title{
+	min-height: 10em;
+}
+
+#user-info-form{
+    background-color: var(--secondaryColor);
+	box-shadow: var(--secondaryShadow);
+	border-radius: var(--secondaryRadius);
+	display: block;
+	max-width: 700px;
+	margin: 0 auto;
+	padding: 15px;
+	background-color: var(--secondaryColor);
+	margin-bottom: 50px;
+}
+
+#user-info-form label{
+	line-height: 2.7em;
+}
+
+.input-field{
+	width: 100%;
+	padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+	background-color: var(--secondaryColor);
+	border-radius: 5px;
+	border: none;
+	font-size: 14px;
+	box-shadow: var(--inputField);
+}
+
+#submit-btn{
+	margin-top: 20px;
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 5px;
+	color: #fff;
+	background-color: var(--buttonColor);
+	border: none;
+}
+
+.success-color{
+	color: #0004ff;
+}
+.failure-color{
+	color: #ff0018 ;
+}
+#coupon_input{
+    width: 75%;
+}
+#apply-coupon{
+    color: #fff;
+	background-color: var(--buttonColor);
+    border: none;
+    cursor: pointer;
+    width: 25%;
+}
+
+input:focus, input[type]:focus, .uneditable-input:focus {   
+    border-color: var(--borderColor);
+    outline: 0 none;
+}
+
+.hidden{
+	visibility: hidden;
+}
+
+.alert-box{
+	position: fixed;
+	right:0;
+	background-color:#02a602;
+	font-size: 20px;
+	top:100px;
+	padding:15px 40px 15px 15px;
+	color:#ffffff;
+	min-width: 350px;
+  z-index:10;
+  border-radius: 5px;
+}
+.alert-box .close-alert{
+	font-size:20px;
+	position: absolute;
+	right:10px;
+	top:15px;
+	cursor: pointer;
+	z-index: 11;
+}
+.alert-box.show::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom:0;
+	height: 4px;
+	background-color:#0ed40e;
+	width: 100%;
+	box-sizing: border-box;
+	z-index: 11;
+	animation: hideMeter 6s linear;
+}
+@keyframes hideMeter {
+	0%{
+		width: 100%;
+	}
+	100%{
+		width: 0%;
+	}
+}
+.alert-box.show{
+	animation: showAlert 1s ease forwards;
+}
+@keyframes showAlert{
+	0%{
+		transform: translateX(100%);
+	}
+	40%{
+		transform: translateX(-15%);
+	}
+	80%{
+	   transform: translateX(0%);	
+	}
+	100%{
+	   transform: translateX(-10px);		
+	}
+}
+
+.alert-box.hide{
+	animation: hideAlert 1s ease forwards;
+}
+@keyframes hideAlert{
+	0%{
+		transform: translateX(-10px);		
+	}
+	40%{
+		transform: translateX(0%);	
+	}
+	80%{
+		transform: translateX(-15%);
+	}
+	100%{
+	   transform: translateX(100%);		
+	}
+}
+
+.razorpay-payment-button{
+	margin-top: 20px;
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 5px;
+	color: #fff;
+	background-color: var(--buttonColor);
+	border: none;
+}

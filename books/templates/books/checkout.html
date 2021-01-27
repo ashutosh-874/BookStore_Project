@@ -1,0 +1,116 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}
+Checkout
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href={% static 'css/main.css' %}>
+{% endblock css %}
+
+{% block content %}
+    <div class="container">
+        <div class="page-title d-flex justify-content-center">
+            <h1>BookStore</h1>
+        </div>
+
+        <div class="page-title d-flex justify-content-center">
+            <h3>(Checkout)</h3>
+        </div>
+
+        <div class="row mt-3 mt-sm-5">
+            <div class="col-12 col-sm-4 mt-sm-2 mb-2">
+                <div class="card mx-auto" style="max-width:200px;">
+                    <img class="w-100" src={{book.pic.url}} alt="...">
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-8 " id="user_form_div">
+            <div id="user-info-form" class="g-3">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="name" class="form-label">Name</label>
+                        <input value={{userdata.name}} class="input-field" disabled readonly >
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="mobile" class="form-label">Mobile</label>
+                        <input value={{userdata.mobile}} class="input-field" disabled readonly >
+                    </div>
+                </div>
+
+                
+
+                <div class="row ">
+
+                <div >
+                    <label for="email" class="form-label">Email</label>
+                    <input value={{userdata.email}} class="input-field" disabled readonly >
+                </div>
+                
+                </div>
+
+                {% if coupon_code %}
+
+                <div id="coupon_div" class="row">
+                    <div>
+                        <label for="coupon" class="form-label">
+                            Coupon Code (Optional)
+                        </label>
+                        <div class="input-group">
+                            <input value={{coupon_code}} class="input-field" disabled readonly id="coupon_input" >
+                            <span id="apply-coupon" class="d-inline input-group-text">Applied</span>
+                        </div>
+                    </div>
+                    <div id="coupon-applied-div" class="ms-2 success-color" >
+                            ₹ {{discount}} discount coupon applied
+                    </div>
+                </div>
+
+                {% endif %}
+
+                <div class="row">
+                    <div>
+                        {% if payment %}
+                            <form action={% url 'home_view' %} method="POST">
+                            {% csrf_token %}
+                                <script src="https://checkout.razorpay.com/v1/checkout.js"
+
+                                        {% comment %} =============ENTER YOUR RAZORPAY CREDENTIALS HERE ======================= {% endcomment %}
+                                        data-key="YOUR_KEY"
+                                        {% comment %} =============ENTER YOUR RAZORPAY CREDENTIALS HERE ======================= {% endcomment %}
+                                        
+                                        
+                                        data-amount={{payment.amount_due}}
+                                        data-currency="INR"
+                                        data-order_id={{payment.id}}
+                                        {% if coupon_code %}
+                                        data-buttontext="Pay (₹499 - ₹{{discount}} = ₹{{final_amount}} ) with Razorpay"
+                                        {% else %}
+                                        data-buttontext="Pay ₹ 499 with Razorpay"
+                                        {% endif %}
+                                        data-name="BookStore"
+                                        data-description="Kane & Abel"
+                                        data-image={{book.pic.url}}
+                                        data-prefill.name={{userdata.name}}
+                                        data-prefill.contact={{userdata.mobile}}
+                                        data-prefill.email={{userdata.email}}
+                                        data-theme.color="#F37254">
+                                    </script>
+                            <input type="hidden" custom="Hidden Element" name="hidden">
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+
+        
+
+
+    </div>
+{% endblock content %}

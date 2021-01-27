@@ -1,0 +1,101 @@
+{% extends '_base.html' %}
+{% load static %}
+
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href={% static 'css/main.css' %}>
+{% endblock css %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="alert-box hide hidden">
+        Payment Successful
+        <span class="close-alert">&times;</span>
+    </div>
+
+    <div class="page-title d-flex justify-content-center">
+        <h1>BookStore</h1>
+    </div>
+
+    <div class="row mt-3 mt-sm-5">
+        <div class="col-12 col-sm-4 mt-sm-4 mb-2">
+            <div class="card mx-auto" style="max-width:200px;">
+                <img class="w-100" src={{book.pic.url}} alt="...">
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-8 " id="user_form_div">
+            <form id="user-info-form" action={% url 'checkout' %} method="POST" class="g-3" novalidate>
+            {% csrf_token %}
+                <p id="error-message" class="text-danger text-center" hidden >Please check your credentials and try again</p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="name" class="form-label">Name</label>
+                        <input name="name" type="text" class="input-field" id="name"  required minLength="3">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="mobile" class="form-label">Mobile</label>
+                        <input name="mobile" class="input-field" id="mobile"  pattern="[0-9]{10}" required minLength="10" maxLength="10">
+                    </div>
+                </div>
+
+                
+
+                <div class="row ">
+
+                <div >
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" class="input-field" id="email" required  >
+                </div>
+                
+                </div>
+
+                <div id="coupon_div" class="row">
+                    <div>
+                        <label for="coupon" class="form-label">
+                            Coupon Code (Optional)
+                        </label>
+                        <div class="input-group">
+                            <input class="input-field d-inline" type="text" name="coupon" id="coupon_input" >
+                            <span id="apply-coupon" class="d-inline input-group-text">Apply</span>
+                        </div>
+                    </div>
+                    <div id="coupon-applied-div" class="ms-2" >
+                            
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>
+                        <button type="submit" id="submit-btn">
+                            Purchase ( ₹ <span id="price" >499</span> ) 
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
+
+{% block javascript %}
+<script src={% static 'js/main.js' %}></script>
+
+{% if payment_success %}
+    <script>
+        showAlertBox()
+    </script>
+{% endif %}
+
+{% endblock javascript %}
+
